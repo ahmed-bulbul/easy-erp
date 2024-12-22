@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <!--suppress CheckTagEmptyBody, HtmlUnknownTag -->
+    <!--alternative solution to use th:block in header fragment, HtmlUnknownTag -->
+    <th:block th:include="/layouts/_head :: head"></th:block>
+    <title id="pageTitle">Admin Panel</title>
+    <!--<meta name="ctx" th:content="${#httpServletRequest.getContextPath()}" />-->
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+    <!-- Navbar -->
+    <div th:replace="/layouts/_header :: header"></div>
+
+    <!-- Main Sidebar Container -->
+    <div id="mainSidebar" th:insert="/layouts/_mainSidebarx :: mainSidebar"></div>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Admin Panel</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Admin Panel</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+
+
+            </div><!--/. container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer th:include="layouts/_footer :: footer" class="main-footer"></footer>
+
+</div>
+<!-- ./wrapper -->
+
+
+<div th:include="layouts/_footerScripts :: footerScripts"></div>
+
+
+
+<!-- PAGE SCRIPTS -->
+<!--<script type="text/javascript" src="/static/vendor/adminlte/dist/js/pages/dashboard2.js" th:src="@{vendor/adminlte/dist/js/pages/dashboard2.js}"></script>-->
+
+<!-- Z-ERPLIB SCRIPTS -->
+<!--<script type="text/javascript" src="/static/vendor/erplib/js/JsClientAPI.js" th:src="@{/vendor/erplib/js/JsClientAPI.js}"></script>-->
+
+<!-- PAGE SCRIPTS -->
+<script type="text/javascript" src="/static/js/application.js" th:src="@{/js/application.js}"></script>
+<script type="text/javascript" src="/static/js/adminDashboard.js" th:src="@{/js/adminDashboard.js}"></script>
+<!--<script type="text/javascript" src="/static/js/adminDashboardChartRender.js" th:src="@{/js/adminDashboardChartRender.js}"></script>-->
+<!-- PAGE STYLES -->
+<link rel="stylesheet" href="/static/css/application.css" th:href="@{/css/application.css}">
+<link rel="stylesheet" href="/static/css/adminDashboard.css" th:href="@{/css/adminDashboard.css}">
+
+
+<script th:inline="javascript"> var contextRoot = /*[[@{/}]]*/ ''; </script>
+<script type="text/javascript">
+
+    var ZERP = ZERP || {};
+    ZERP.System = ZERP.System || {};
+    ZERP.System.contextPath = window.location.origin + contextRoot;
+
+    var SysParams = SysParams || {};
+    SysParams.appContextPath = window.location.origin + contextRoot;
+
+    SysParams.setAppContextPath = function() {
+        SysParams.appContextPath = window.location.origin + contextRoot;
+    };
+    SysParams.getAppContextPath = function() {
+        return SysParams.appContextPath;
+    };
+
+
+    $(document).ready(function() {
+
+        SysParams.setAppContextPath();
+
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        });
+
+    });
+</script>
+
+
+
+</body>
+</html>
